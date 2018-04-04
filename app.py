@@ -67,10 +67,15 @@ def processRequest(req):
 
 
 def makeYqlQuery(req):
+    print("!!!!2");
     result = req.get("result")
+    print("!!!!3");
     parameters = result.get("parameters")
+    print("!!!!4");
     city = parameters.get("geo-city")
+    print("!!!!5");
     number = parameters.get("number")
+    print("!!!!6");
     number1 = parameters.get("number1")
     print("number: " + number);
     print("number1: " + number1);
