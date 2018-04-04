@@ -50,7 +50,6 @@ def webhook():
 
 
 def processRequest(req):
-    print("!!!!1");
     if req.get("result").get("action") != "yahooWeatherForecast":
         print("Failed!!");
         return {}
@@ -69,13 +68,16 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
+    print(parameters);
     city = parameters.get("geo-city")
+    print("city:"+ city);
     number = parameters.get("number")
+    print("number:");
     number1 = parameters.get("number1")
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
     if city is None:
-        return None
+        city = "sunnyvale"
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
