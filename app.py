@@ -32,7 +32,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-
+result = 0;
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
@@ -51,15 +51,10 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
-        print("Failed!!");
+        print("Failed!! Action is wrong");
         return {}
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
     print("Make Yahoo Query!!");
-    yql_query = makeYqlQuery(req)
-    if yql_query is None:
-        return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    result = urlopen(yql_url).read()
+    result = makeYqlQuery(req)
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
@@ -76,10 +71,10 @@ def makeYqlQuery(req):
     number1 = parameters.get("number1")
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
-    if city is None:
-        city = "sunnyvale"
+    #if city is None:
+    #    city = "sunnyvale"
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return str(number + number1);
 
 
 def makeWebhookResult(data):
