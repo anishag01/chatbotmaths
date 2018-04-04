@@ -71,7 +71,7 @@ def makeYqlQuery(req):
     result = req.get("result")
     print("!!!!3");
     parameters = result.get("parameters")
-    print("!!!!4");
+    print(parameters);
     city = parameters.get("geo-city")
     print("!!!!5");
     number = parameters.get("number")
