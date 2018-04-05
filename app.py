@@ -56,6 +56,8 @@ def processRequest(req):
     print("Make Yahoo Query!!");
     result = makeYqlQuery(req)
     data = json.loads(result)
+    print("Sending:")
+    print(data)
     res = makeWebhookResult(data)
     return res
 
@@ -67,7 +69,6 @@ def makeYqlQuery(req):
     city = parameters.get("geo-city")
     print("city:"+ city);
     number = parameters.get("number")
-    print("number:");
     number1 = parameters.get("number1")
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
