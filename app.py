@@ -74,7 +74,7 @@ def makeYqlQuery(req):
     #if city is None:
     #    city = "sunnyvale"
 
-    return str(number + number1);
+    return str(int(number) + int(number1));
 
 
 def makeWebhookResult(data):
