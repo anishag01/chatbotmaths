@@ -93,15 +93,10 @@ def makeYqlQuery1(req):
     result = req.get("result")
     parameters = result.get("parameters")
     print(parameters);
-    city = parameters.get("geo-city")
-    print("city:"+ city);
     number = parameters.get("number")
     number1 = parameters.get("number1")
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
-    if city is None:
-        city = "sunnyvale"
-
     #return str(number + number1);
     return str(number + number1);
 
