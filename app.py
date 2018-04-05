@@ -54,7 +54,7 @@ def processRequest1(req):
         print("Failed!! Action is wrong");
         return {}
     print("Make Yahoo Query!!");
-    result = makeYqlQuery(req)
+    result = makeYqlQuery1(req)
     data = json.loads(result)
     print("Sending:")
     print(data)
