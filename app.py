@@ -50,7 +50,7 @@ def webhook():
 
 
 def processRequest1(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
+    if req.get("result").get("action") != "calculate":
         print("Failed!! Action is wrong");
         return {}
     print("Make Yahoo Query!!");
