@@ -40,7 +40,7 @@ def webhook():
     print("!!!Request:")
     print(json.dumps(req, indent=4))
 
-    res = processRequest1(req)
+    res = processRequest(req)
 
     res = json.dumps(res, indent=4)
     # print(res)
@@ -49,27 +49,12 @@ def webhook():
     return r
 
 
-def processRequest1(req):
+def processRequest(req):
     if req.get("result").get("action") != "calculate":
         print("Failed!! Action is wrong");
         return {}
     print("Make Yahoo Query!!");
-    result = makeYqlQuery1(req)
-    data = json.loads(result)
-    print("Sending:")
-    print(data)
-    res = makeWebhookResult(data)
-    return res
-
-def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
-        return {}
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
-    yql_query = makeYqlQuery(req)
-    if yql_query is None:
-        return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    result = urlopen(yql_url).read()
+    result = makeYqlQuery(req)
     data = json.loads(result)
     print("Sending:")
     print(data)
@@ -77,19 +62,6 @@ def processRequest(req):
     return res
 
 def makeYqlQuery(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    number = parameters.get("number")
-    number1 = parameters.get("number1")
-    print("!!!number: " + str(number));
-    print("!!!number1: " + str(number1));
-    if city is None:
-        return None
-
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
-
-def makeYqlQuery1(req):
     result = req.get("result")
     parameters = result.get("parameters")
     print(parameters);
