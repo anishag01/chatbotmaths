@@ -54,22 +54,24 @@ def processRequest(req):
         print("Failed!! Action is wrong");
         return {}
     print("Make Query");
-    result = makeYqlQuery(req)
+    result = do_calculate(req)
     data = json.loads(result)
     print("Sending:")
     print(data)
     res = makeWebhookResult(data)
     return res
 
-def makeYqlQuery(req):
+def do_calculate(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    print(parameters);
     number = parameters.get("number")
     number1 = parameters.get("number1")
+    operation = parameters.get("any")
+    
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
-    #return str(number + number1);
+    print("!!!operation: " + str(number1));
+    
     return str(int(number) + int(number1));
 
 
