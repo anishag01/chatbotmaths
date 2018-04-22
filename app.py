@@ -53,7 +53,7 @@ def processRequest(req):
     if req.get("result").get("action") != "calculate":
         print("Failed!! Action is wrong");
         return {}
-    print("Make Yahoo Query!!");
+    print("Make Yahoo Query");
     result = makeYqlQuery(req)
     data = json.loads(result)
     print("Sending:")
