@@ -72,8 +72,14 @@ def do_calculate(req):
     print("!!!number1: " + str(number1));
     print("!!!operation: " + str(operation));
     
-    return str(int(number) + int(number1));
-
+    if operation =='+':
+        return str(int(number) + int(number1));
+    elif operation == '-':
+         return str(int(number) - int(number1));
+    elif operation == '/':
+         return str(int(number) / int(number1));
+    elif operation == '*':
+         return str(int(number) * int(number1));
 
 def makeWebhookResult(data):
     print("Response:")
