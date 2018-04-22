@@ -80,7 +80,8 @@ def do_calculate(req):
          return str(int(number) / int(number1));
     elif operation == '*':
          return str(int(number) * int(number1));
-
+    else:
+         return "ERRORRRRRRRR!!!!!"
 def makeWebhookResult(data):
     print("Response:")
     print(data)
