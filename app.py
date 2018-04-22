@@ -70,7 +70,7 @@ def do_calculate(req):
     
     print("!!!number: " + str(number));
     print("!!!number1: " + str(number1));
-    print("!!!operation: " + str(any));
+    print("!!!operation: " + str(operation));
     
     return str(int(number) + int(number1));
 
